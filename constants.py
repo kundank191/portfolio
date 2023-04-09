@@ -1,0 +1,1 @@
+LOCATION_TO_SAVE_FILES = './logs/'

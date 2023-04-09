@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar Optimization</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Calendar Optimization</h1>
+        <p>Upload your ics file and get the optimized version of it.</p>
+        <form action="/update_calendar" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Select your ics file:</label>
+                <input type="file" name="file" id="file">
+            </div>
+            <input type="submit" name="submit" value="Upload">
+        </form>
+    </div>
+</body>
+
+</html>
