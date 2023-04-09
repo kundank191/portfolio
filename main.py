@@ -1,6 +1,7 @@
 from io import BytesIO
 from flask import Flask, render_template, request, send_file
 from calendar_optimization.calendar_api import add_alarm_to_calender_events
+from pdf_editor import crop_pdf
 
 app = Flask(__name__, static_folder='static',
             static_url_path='', template_folder='templates')
@@ -19,6 +20,28 @@ def calendar_optimization():
     This function will render the calendar optimization page
     """
     return render_template('calendar_optimization.html')
+
+@app.route('/crop_pdf')
+def crop_pdf():
+    """
+    This function will render the crop pdf page
+    """
+    return render_template('crop_pdf.html')
+
+@app.route('/handle_crop_pdf', methods=['POST'])
+def handle_crop_pdf():
+    file = request.files['file']
+    left = int(request.form['left'])
+    top = int(request.form['top'])
+    width = int(request.form['width'])
+    height = int(request.form['height'])
+
+    file_in_memory = BytesIO()
+    file.save(file_in_memory)
+
+    cropped_pdf = crop_pdf(file_in_memory, left, top, width, height)
+
+    return send_file(cropped_pdf, mimetype='application/pdf', as_attachment=True, attachment_filename='cropped_pdf.pdf')
 
 @app.route('/update_calendar', methods=['POST'])
 def update_calendar():
