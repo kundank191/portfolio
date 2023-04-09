@@ -2,22 +2,51 @@
 <html>
 <head>
     <title>Calendar Optimization</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-label {
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Calendar Optimization</h1>
-        <p>Upload your ics file and get the optimized version of it.</p>
-        <form action="/update_calendar" method="post" enctype="multipart/form-data">
+        <h1 class="text-center my-4">Calendar Optimization</h1>
+        <p class="text-center">Upload your ics file and get the optimized version of it.</p>
+        <form action="/update_calendar" method="post" enctype="multipart/form-data" class="form-container">
             <div class="form-group">
                 <label for="file">Select your ics file:</label>
-                <input type="file" name="file" id="file">
+                <input type="file" name="file" id="file" class="form-control">
             </div>
-            <input type="submit" name="submit" value="Upload">
+            <div class="form-row">
+                <div class="col">
+                    <label for="num_day_before_notif" class="form-label">Days before notification:</label>
+                    <input type="number" name="num_day_before_notif" id="num_day_before_notif" value="0" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="num_hour_before_notif" class="form-label">Hours before notification:</label>
+                    <input type="number" name="num_hour_before_notif" id="num_hour_before_notif" value="0" class="form-control">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label for="num_min_before_notif" class="form-label">Minutes before notification:</label>
+                    <input type="number" name="num_min_before_notif" id="num_min_before_notif" value="5" class="form-control">
+                </div>
+                <div class="col">
+                    <label for="num_sec_before_notif" class="form-label">Seconds before notification:</label>
+                    <input type="number" name="num_sec_before_notif" id="num_sec_before_notif" value="0" class="form-control">
+                </div>
+            </div>
+            <input type="submit" name="submit" value="Upload" class="btn btn-primary mt-4">
         </form>
     </div>
 </body>
-
 </html>
