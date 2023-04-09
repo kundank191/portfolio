@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Editor - Crop PDF</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>PDF Editor - Crop PDF</h1>
+        <p>Upload your PDF file and crop it to the desired dimensions.</p>
+        <form action="/crop_pdf" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Select your PDF file:</label>
+                <input type="file" name="file" id="file" class="form-control-file">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="left">Left margin (in points):</label>
+                    <input type="number" name="left" id="left" class="form-control" value="0" min="0">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="top">Top margin (in points):</label>
+                    <input type="number" name="top" id="top" class="form-control" value="0" min="0">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="width">Width (in points):</label>
+                    <input type="number" name="width" id="width" class="form-control" value="612" min="1">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="height">Height (in points):</label>
+                    <input type="number" name="height" id="height" class="form-control" value="792" min="1">
+                </div>
+            </div>
+            <input type="submit" name="submit" value="Crop PDF" class="btn btn-primary">
+        </form>
+    </div>
+</body>
+</html>
