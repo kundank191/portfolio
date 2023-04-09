@@ -1,51 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello, World!</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      color: #333;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-    h1 {
-      font-size: 3rem;
-      margin: 0 0 1rem 0;
-      background-color: #fff;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+        h1 {
+            font-size: 3rem;
+            margin: 0 0 1rem 0;
+            background-color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-    a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      font-size: 1.2rem;
-      background-color: #4285f4;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: background-color 0.2s;
-    }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+        }
 
-    a:hover {
-      background-color: #3b7ce3;
-    }
-  </style>
+        th, td {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+            background-color: #4285f4;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        a:hover {
+            background-color: #3b7ce3;
+        }
+    </style>
 </head>
 <body>
-  <h1>Hello, World!</h1>
-  <a href="/calendar_optimization">Calendar</a>
-
+    <h1>My Projects</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Project Description</th>
+                <th>Link to Try</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Calendar Optimization</td>
+                <td>Adds an alarm to your calendar events</td>
+                <td><a href="/calendar_optimization">Try</a></td>
+            </tr>
+            <tr>
+                <td>Dummy App 1</td>
+                <td>Description of Dummy App 1</td>
+                <td><a href="#">Try</a></td>
+            </tr>
+            <tr>
+                <td>Dummy App 2</td>
+                <td>Description of Dummy App 2</td>
+                <td><a href="#">Try</a></td>
+            </tr>
+            <tr>
+                <td>Dummy App 3</td>
+                <td>Description of Dummy App 3</td>
+                <td><a href="#">Try</a></td>
+            </tr>
+            <tr>
+                <td>Dummy App 4</td>
+                <td>Description of Dummy App 4</td>
+                <td><a href="#">Try</a></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>
