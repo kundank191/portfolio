@@ -1,8 +1,10 @@
-def add_alarm_to_calender_events(filepath, num_day_before_notif=0, num_hour_before_notif=0, num_min_before_notif=5, num_sec_before_notif=0):
+import io
+
+def add_alarm_to_calender_events(file_in_memory, num_day_before_notif=0, num_hour_before_notif=0, num_min_before_notif=5, num_sec_before_notif=0):
     """
-    function will take an .ics file and then add notif to the file
+    function will take an .ics file from an in-memory file and then add notif to the file
     Args:
-        filepath : the location of the file
+        file_in_memory : the in-memory file
         num_day_before_notif : The num days before which notif will be scheduled
         num_hour_before_notif : The num hour before which notif will be scheduled
         num_min_before_notif : The num  min before notif will be scheduled
@@ -21,12 +23,13 @@ END:VEVENT
 
     to_replace = """END:VEVENT"""
 
-    with open(filepath, "r", encoding="utf-8") as file:
-        data = file.read()
+    file_in_memory.seek(0)
+    data = file_in_memory.read().decode('utf-8')
 
     updated_file = data.replace(to_replace, alarm_schema)
 
-    with open(filepath, "w", encoding="utf-8") as file:
-        file.write(updated_file)
+    file_in_memory.seek(0)
+    file_in_memory.truncate()
+    file_in_memory.write(updated_file.encode('utf-8'))
 
     return {"status": "success", "message": "Alarm added to the calendar events"}
