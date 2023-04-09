@@ -34,7 +34,7 @@ def update_calendar():
 
     # return the file to the user
     file_in_memory.seek(0)
-    return send_file(file_in_memory, attachment_filename=file.filename, as_attachment=True)
+    return send_file(file_in_memory,download_name=file.filename,as_attachment=True)
 
 @app.errorhandler(404)
 def page_not_found(info):
