@@ -26,15 +26,21 @@ def update_calendar():
     This function will update the calendar events with the alarm
     """
     file = request.files['file']
+    num_day_before_notif = int(request.form.get('num_day_before_notif', 0))
+    num_hour_before_notif = int(request.form.get('num_hour_before_notif', 0))
+    num_min_before_notif = int(request.form.get('num_min_before_notif', 5))
+    num_sec_before_notif = int(request.form.get('num_sec_before_notif', 0))
+
     file_in_memory = BytesIO()
     file.save(file_in_memory)
 
     # add alarm to the calendar events
-    add_alarm_to_calender_events(file_in_memory)
+    add_alarm_to_calender_events(file_in_memory, num_day_before_notif, num_hour_before_notif, num_min_before_notif, num_sec_before_notif)
 
     # return the file to the user
     file_in_memory.seek(0)
-    return send_file(file_in_memory,download_name=file.filename,as_attachment=True)
+    return send_file(file_in_memory, download_name=file.filename, as_attachment=True)
+
 
 @app.errorhandler(404)
 def page_not_found(info):
