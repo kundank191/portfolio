@@ -97,13 +97,6 @@
 										I thrive on solving complex puzzles and am always eager to collaborate on innovative projects. Let's connect and explore the endless possibilities of the data-driven world together!
 									</p>
 								</div>
-								<div class="row">
-									<div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks
-										for filling out the form!</div>
-									<div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-										Oops...! some problem!
-									</div>
-								</div>
 							</div>
 						</form>
 					</div>
@@ -157,78 +150,36 @@
 				<div class="col-12 content-head">
 					<div class="mbr-section-head mb-5">
 						<h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-							<strong>Our Products</strong>
+							<strong>Recent Blogs</strong>
 						</h4>
-
-
 					</div>
 				</div>
 			</div>
 			<div class="row">
+				{% for blog in blogs %}
 				<div class="item features-image col-12 col-md-6 col-lg-4">
 					<div class="item-wrapper">
 						<div class="item-img">
-							<img src="assets/images/shop1.jpg" alt="Mobirise Website Builder">
+							<img src="{{ blog.image_url }}" alt="{{ blog.title }}">
 						</div>
 						<div class="item-content">
 							<h5 class="item-title mbr-fonts-style display-5">
-								<strong>Marketing</strong>
+								<strong>{{ blog.title }}</strong>
 							</h5>
 							<h6 class="item-subtitle mbr-fonts-style display-7">
-								$5.00
+								{{ blog.tags}}
 							</h6>
 							<p class="mbr-text mbr-fonts-style display-7">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit habitant turpis.
+								{{ blog.description | truncate(300, '...') }}
 							</p>
 							<div class="mbr-section-btn item-footer">
-								<a href="" class="btn item-btn btn-primary display-7">Learn More</a>
+								<a href="{{ blog.url }}" class="btn item-btn btn-primary display-7" target="_blank">Read More</a>
 							</div>
 						</div>
 
 					</div>
 				</div>
-				<div class="item features-image col-12 col-md-6 col-lg-4">
-					<div class="item-wrapper">
-						<div class="item-img">
-							<img src="assets/images/shop2.jpg" alt="Mobirise Website Builder">
-						</div>
-						<div class="item-content">
-							<h5 class="item-title mbr-fonts-style display-5">
-								<strong>Promotion</strong>
-							</h5>
-							<h6 class="item-subtitle mbr-fonts-style display-7">
-								$7.00
-							</h6>
-							<p class="mbr-text mbr-fonts-style display-7">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit habitant turpis .
-							</p>
-							<div class="mbr-section-btn item-footer">
-								<a href="" class="btn item-btn btn-primary display-7">Learn More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="item features-image col-12 col-md-6 col-lg-4">
-					<div class="item-wrapper">
-						<div class="item-img">
-							<img src="assets/images/shop3.jpg" alt="Mobirise Website Builder">
-						</div>
-						<div class="item-content">
-							<h5 class="item-title mbr-fonts-style display-5">
-								<strong>Branding</strong>
-							</h5>
-							<h6 class="item-subtitle mbr-fonts-style display-7">
-								$10.00
-							</h6>
-							<p class="mbr-text mbr-fonts-style display-7">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit habitant turpis .<br>
-							</p>
-							<div class="mbr-section-btn item-footer">
-								<a href="" class="btn item-btn btn-primary display-7">Learn More</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</section>
@@ -239,14 +190,12 @@
 				<h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
 					<strong>Contact Form</strong>
 				</h3>
-				<h4 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7">To change your
-					notification email, click on any form field below.
-					<div>The number of submissions is limited to 10 per day without the Form Builder.</div>
+				<h4 class="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7">Share Your Details to Connect!
 				</h4>
 			</div>
 			<div class="row justify-content-center mt-4">
 				<div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
-					<form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler"
+					<form action="/connect_with_me" method="POST" class="mbr-form form-with-styler"
 						data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true"
 							value="4ht6w4GljSABxbC1t6cN1qWRE5UQk9USd9EmhbxVH2Aamsk4WXeNk5SauKlK3hlB9DJgBUSVbOeDTEVosC9nRdyZnZqfdmZhgXcMDN1MBSgMhNLxRjv2tfI1l//BSMSh">
 						<div class="row">
@@ -283,43 +232,6 @@
 		</div>
 	</section>
 
-	<section data-bs-version="5.1" class="social03 cid-tRfsu3yMy7" id="social03-1l">
-
-		<div class="container">
-			<div class="media-container-row">
-				<div class="col-12">
-					<h3 class="mbr-section-title mb-4 align-center mbr-fonts-style display-2">
-						<strong>Share this page</strong>
-					</h3>
-					<p class="mbr-section-text mb-5 align-center mbr-fonts-style display-7">
-						Some options of sharing are available only if your page is online.
-					</p>
-					<div>
-						<div class="mbr-social-likes align-center">
-							<span class="btn btn-social socicon-bg-facebook facebook m-2">
-								<i class="socicon socicon-facebook"></i>
-							</span>
-							<span class="btn btn-social twitter socicon-bg-twitter m-2">
-								<i class="socicon socicon-twitter"></i>
-							</span>
-							<span class="btn btn-social pinterest socicon-bg-pinterest m-2">
-								<i class="socicon socicon-pinterest"></i>
-							</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="display-7"
-		style="padding: 0;align-items: center;justify-content: center;flex-wrap: wrap;    align-content: center;display: flex;position: relative;height: 4rem;">
-		<a href="https://mobiri.se/3089439"
-			style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;"
-				src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a>
-		<p style="margin: 0;text-align: center;" class="display-7">&#8204;</p><a style="z-index:1"
-			href="https://mobirise.com/html-editor.html">WYSIWYG HTML Editor</a>
-	</section>
 	<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="assets/smoothscroll/smooth-scroll.js"></script>
 	<script src="assets/ytplayer/index.js"></script>
