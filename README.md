@@ -14,13 +14,13 @@ Before running this project, ensure you have the following prerequisites:
 1. Clone the repository to your local machine.
 
    ```bash
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/kundank191/portfolio.git
    ```
 
 2. Change into the project directory.
 
    ```bash
-   cd your-project
+   cd portfolio
    ```
 
 3. Create a virtual environment (optional but recommended).
@@ -91,3 +91,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 - Flask
 - MongoDB
 - Python libraries used in the project
+- flat icon for icons
+- unsplash for the images
+- mobirise for the html templates
