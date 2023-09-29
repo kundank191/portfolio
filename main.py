@@ -23,7 +23,7 @@ def index():
     projects = Project.objects(project_type = "Github Project").order_by('-start_date').limit(3)
     blogs = Project.objects(project_type = "Medium Article").order_by('-start_date').limit(3)
 
-    return render_template('another_index.html', projects = projects, blogs = blogs)
+    return render_template('index.html', projects = projects, blogs = blogs)
 
 @app.route('/connect_with_me', methods=['GET', 'POST'])
 def connect_with_me():
