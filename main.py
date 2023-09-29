@@ -20,8 +20,8 @@ def index():
     """
     This function will render the index page
     """
-    projects = Project.objects(project_type = "Github Project")
-    blogs = Project.objects(project_type = "Medium Article")
+    projects = Project.objects(project_type = "Github Project").order_by('-start_date').limit(3)
+    blogs = Project.objects(project_type = "Medium Article").order_by('-start_date').limit(3)
 
     return render_template('another_index.html', projects = projects, blogs = blogs)
 
