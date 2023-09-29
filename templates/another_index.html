@@ -110,40 +110,53 @@
 		</div>
 	</section>
 
+	<!-- Projects Section-->
 	<section data-bs-version="5.1" class="features024 cid-tRfsMP6d4j" id="features024-1m">
 		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 content-head">
+					<div class="mbr-section-head mb-5">
+						<h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+							<strong>Recent Projects</strong>
+						</h4>
+					</div>
+				</div>
+			</div>
 			<div class="row justify-content-center align-items-center">
+				{% for project in projects %}
 				<div class="col-12">
 					<div class="card-wrapper">
 						<div class="row">
 							<div class="col-12 col-md-12 col-lg-6 image-wrapper">
-								<img class="w-100" src="assets/images/shop5.jpg" alt="Mobirise Website Builder">
+								<img class="w-100" src="{{ project.image_url }}" alt="{{ project.title }}">
 							</div>
 							<div class="col-12 col-lg col-md-12">
 								<div class="text-wrapper align-left">
 									<h5 class="mbr-section-title mbr-fonts-style mb-4 display-2">
-										<strong>Basic Beige Sweatshirt</strong>
+										<strong>{{ project.title }}</strong>
 									</h5>
 									<p class="price mbr-fonts-style mb-4 display-7">
-										$29.00
+										{{ project.tags}}
 									</p>
 									<p class="mbr-text mbr-fonts-style mb-4 display-7">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-										egestas massa vel nulla gravida pulvinar. Pellentesque
-										habitant morbi.
+										{{ project.description | truncate(300, '...') }}
 									</p>
 									<div class="mbr-section-btn mt-3">
-										<a class="btn btn-lg btn-primary display-7" href="https://mobiri.se">Buy now</a>
+										<a class="btn btn-lg btn-primary display-7" href="{{ project.url }}" target="_blank">
+											View Code&nbsp;&nbsp;<i class="fab fa-github"></i>
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</section>
 
+	<!-- Blog Section-->
 	<section data-bs-version="5.1" class="features4 cid-tRfskw8QYv" id="features04-1k">
 		<div class="container">
 			<div class="row justify-content-center">
