@@ -23,7 +23,7 @@ def index():
     projects = Project.objects(project_type = "Github Project")
     blogs = Project.objects(project_type = "Medium Article")
 
-    return render_template('index.html', projects = projects, blogs = blogs)
+    return render_template('another_index.html', projects = projects, blogs = blogs)
 
 @app.route('/projects/calendar_optimization')
 def calendar_optimization():
@@ -84,4 +84,4 @@ def page_not_found(info):
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(host='localhost', port='8080', debug=True)
+    app.run(host='localhost', port='8080')
