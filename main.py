@@ -1,27 +1,36 @@
+from os import environ
 from io import BytesIO
 from flask import Flask, render_template, request, send_file
 from calendar_optimization.calendar_api import add_alarm_to_calender_events
 from pdf_editor import crop_pdf
+from database.db import Project
+from mongoengine import connect
 
-app = Flask(__name__, static_folder='static',
-            static_url_path='', template_folder='templates')
+app = Flask(
+    __name__, 
+    static_folder='static',
+    static_url_path='', 
+    template_folder='templates'
+)
+
+connect(host = environ.get('MONGO_URI'))
 
 @app.route('/')
 def index():
     """
     This function will render the index page
     """
+    projects = Project.objects()
+    return render_template('index.html', projects = projects)
 
-    return render_template('index.html')
-
-@app.route('/calendar_optimization')
+@app.route('/projects/calendar_optimization')
 def calendar_optimization():
     """
     This function will render the calendar optimization page
     """
     return render_template('calendar_optimization.html')
 
-@app.route('/crop_pdf')
+@app.route('/projects/crop_pdf')
 def crop_pdf():
     """
     This function will render the crop pdf page
@@ -63,7 +72,6 @@ def update_calendar():
     # return the file to the user
     file_in_memory.seek(0)
     return send_file(file_in_memory, download_name=file.filename, as_attachment=True)
-
 
 @app.errorhandler(404)
 def page_not_found(info):

@@ -1,100 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin: 0 0 1rem 0;
-            background-color: #fff;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 80%;
-        }
-
-        th, td {
-            border: 1px solid #ccc;
-            padding: 1rem;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        a {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            font-size: 1.2rem;
-            background-color: #4285f4;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.2s;
-        }
-
-        a:hover {
-            background-color: #3b7ce3;
-        }
-    </style>
+    <title>Project List</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Additional CSS for custom styling (optional) -->
+    <link rel="stylesheet" href="/static/css/custom.css">
 </head>
+
 <body>
-    <h1>My Projects</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Project Name</th>
-                <th>Project Description</th>
-                <th>Link to Try</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Calendar Optimization</td>
-                <td>Adds an alarm to your calendar events</td>
-                <td><a href="/calendar_optimization">Try</a></td>
-            </tr>
-            <tr>
-                <td>PDF Cropper</td>
-                <td>App to crop PDF.</td>
-                <td><a href="/crop_pdf">Try</a></td>
-            </tr>
-            <tr>
-                <td>Dummy App 2</td>
-                <td>Description of Dummy App 2</td>
-                <td><a href="#">Try</a></td>
-            </tr>
-            <tr>
-                <td>Dummy App 3</td>
-                <td>Description of Dummy App 3</td>
-                <td><a href="#">Try</a></td>
-            </tr>
-            <tr>
-                <td>Dummy App 4</td>
-                <td>Description of Dummy App 4</td>
-                <td><a href="#">Try</a></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container mt-5">
+        <h1 class="mb-4">Project List</h1>
+
+        <!-- Add a "Create" button to project_list.html -->
+        <a href="/add_project" class="btn btn-success mb-3">Create New Project</a>
+
+        <!-- Project List -->
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-4 mb-4">
+                <a href="/project/{{ project.id }}" class="card-link">
+                    <div class="card">
+                        <img src="{{ project.image_url }}" class="card-img-top" alt="{{ project.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.title }}</h5>
+                            <p class="card-text">{{ project.description }}</p>
+
+                            <!-- Display tags as colorful chips -->
+                            <div class="mb-2">
+                                {% for tag in project.tags %}
+                                {% set tag_colors = {'tag1': 'badge-primary', 'tag2': 'badge-success', 'tag3':
+                                'badge-info', 'tag4': 'badge-warning', 'tag5': 'badge-danger'} %}
+                                {% set badge_class = tag_colors.get(tag, 'badge-primary') %}
+                                <span class="badge {{ badge_class }}">{{ tag }}</span>
+                                {% endfor %}
+                            </div>
+                </a>
+                <a href="{{ project.url }}" class="btn btn-primary" target="_blank">Visit Project</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery here -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
