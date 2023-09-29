@@ -1,27 +1,52 @@
+from os import environ
 from io import BytesIO
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, redirect
 from calendar_optimization.calendar_api import add_alarm_to_calender_events
 from pdf_editor import crop_pdf
+from database.db import Project
+from mongoengine import connect
 
-app = Flask(__name__, static_folder='static',
-            static_url_path='', template_folder='templates')
+app = Flask(
+    __name__, 
+    static_folder='static',
+    static_url_path='', 
+    template_folder='templates'
+)
+
+connect(host = environ.get('MONGO_URI'))
 
 @app.route('/')
 def index():
     """
     This function will render the index page
     """
+    projects = Project.objects(project_type = "Github Project").order_by('-start_date').limit(3)
+    blogs = Project.objects(project_type = "Medium Article").order_by('-start_date').limit(3)
 
-    return render_template('index.html')
+    return render_template('index.html', projects = projects, blogs = blogs)
 
-@app.route('/calendar_optimization')
+@app.route('/connect_with_me', methods=['GET', 'POST'])
+def connect_with_me():
+    """
+    This function will render the index page
+    """
+    print(f"""
+    Name : {request.form.get('name')},
+    Email : {request.form.get('email')},
+    Phone : {request.form.get('phone')},
+    Message : {request.form.get('textarea')},
+    """)
+
+    return redirect("/")
+
+@app.route('/projects/calendar_optimization')
 def calendar_optimization():
     """
     This function will render the calendar optimization page
     """
     return render_template('calendar_optimization.html')
 
-@app.route('/crop_pdf')
+@app.route('/projects/crop_pdf')
 def crop_pdf():
     """
     This function will render the crop pdf page
@@ -64,7 +89,6 @@ def update_calendar():
     file_in_memory.seek(0)
     return send_file(file_in_memory, download_name=file.filename, as_attachment=True)
 
-
 @app.errorhandler(404)
 def page_not_found(info):
     """
@@ -74,4 +98,4 @@ def page_not_found(info):
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(host='localhost', port='8080', debug=True)
+    app.run(host='localhost', port='8080', debug = True)
