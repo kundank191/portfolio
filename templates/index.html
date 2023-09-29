@@ -4,47 +4,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project List</title>
+    <title>Your Portfolio</title>
     <!-- Add Bootstrap CSS link here -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Additional CSS for custom styling (optional) -->
     <link rel="stylesheet" href="/static/css/custom.css">
+    <style>
+        /* Custom CSS for styling */
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .btn-primary {
+            background-color: #4e6bff; /* Button background color */
+            border-color: #4e6bff; /* Button border color */
+        }
+
+        .btn-primary:hover {
+            background-color: #3d55e1; /* Hover background color */
+            border-color: #3d55e1; /* Hover border color */
+        }
+
+        /* Custom CSS for card formatting */
+        .card-horizontal {
+            display: flex;
+        }
+
+        .card-horizontal .card-img-top {
+            width: 40%; /* Adjust image width as needed */
+            object-fit: cover; /* Maintain aspect ratio for image */
+        }
+
+        .card-horizontal .card-body {
+            flex-grow: 1;
+            padding: 1rem;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Project List</h1>
-
-        <!-- Add a "Create" button to project_list.html -->
-        <a href="/add_project" class="btn btn-success mb-3">Create New Project</a>
-
-        <!-- Project List -->
+        <!-- Section 1: Name, Description, and Image -->
         <div class="row">
-            {% for project in projects %}
-            <div class="col-md-4 mb-4">
-                <a href="/project/{{ project.id }}" class="card-link">
-                    <div class="card">
-                        <img src="{{ project.image_url }}" class="card-img-top" alt="{{ project.title }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ project.title }}</h5>
-                            <p class="card-text">{{ project.description }}</p>
-
-                            <!-- Display tags as colorful chips -->
-                            <div class="mb-2">
-                                {% for tag in project.tags %}
-                                {% set tag_colors = {'tag1': 'badge-primary', 'tag2': 'badge-success', 'tag3':
-                                'badge-info', 'tag4': 'badge-warning', 'tag5': 'badge-danger'} %}
-                                {% set badge_class = tag_colors.get(tag, 'badge-primary') %}
-                                <span class="badge {{ badge_class }}">{{ tag }}</span>
-                                {% endfor %}
-                            </div>
-                </a>
-                <a href="{{ project.url }}" class="btn btn-primary" target="_blank">Visit Project</a>
+            <div class="col-md-6">
+                <h1>Your Name</h1>
+                <p>Your description goes here.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="your_image_url.jpg" alt="Your Name" class="img-fluid rounded-circle">
             </div>
         </div>
-    </div>
-    {% endfor %}
-    </div>
+
+        <!-- Section 2: Projects -->
+        <h2 class="section-title">Projects</h2>
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-12 project-card">
+                <div class="card card-horizontal">
+                    <img src="{{ project.image_url }}" class="card-img-top" alt="{{ project.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text">{{ project.description }}</p>
+                        <a href="{{ project.github_url }}" class="btn btn-primary" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Section 3: Blogs -->
+        <h2 class="section-title">Blogs</h2>
+        <div class="row">
+            {% for blog in blogs %}
+            <div class="col-md-12 blog-card">
+                <div class="card card-horizontal">
+                    <img src="{{ blog.image_url }}" class="card-img-top" alt="{{ blog.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ blog.title }}</h5>
+                        <p class="card-text">{{ blog.description }}</p>
+                        <a href="{{ blog.medium_url }}" class="btn btn-primary" target="_blank">Medium</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 
     <!-- Add Bootstrap JS and jQuery here -->

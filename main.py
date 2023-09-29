@@ -20,8 +20,10 @@ def index():
     """
     This function will render the index page
     """
-    projects = Project.objects()
-    return render_template('index.html', projects = projects)
+    projects = Project.objects(project_type = "Github Project")
+    blogs = Project.objects(project_type = "Medium Article")
+
+    return render_template('index.html', projects = projects, blogs = blogs)
 
 @app.route('/projects/calendar_optimization')
 def calendar_optimization():
