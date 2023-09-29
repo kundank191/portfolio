@@ -1,6 +1,6 @@
 from os import environ
 from io import BytesIO
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, redirect
 from calendar_optimization.calendar_api import add_alarm_to_calender_events
 from pdf_editor import crop_pdf
 from database.db import Project
@@ -24,6 +24,20 @@ def index():
     blogs = Project.objects(project_type = "Medium Article").order_by('-start_date').limit(3)
 
     return render_template('another_index.html', projects = projects, blogs = blogs)
+
+@app.route('/connect_with_me', methods=['GET', 'POST'])
+def connect_with_me():
+    """
+    This function will render the index page
+    """
+    print(f"""
+    Name : {request.form.get('name')},
+    Email : {request.form.get('email')},
+    Phone : {request.form.get('phone')},
+    Message : {request.form.get('textarea')},
+    """)
+
+    return redirect("/")
 
 @app.route('/projects/calendar_optimization')
 def calendar_optimization():
